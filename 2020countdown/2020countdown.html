@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>2020</title>
+    <meta charset="utf-8">
+    <style>
+      h1{
+        font-size: 200px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-family: 	serif;
+        text-align: center;
+      }
+
+      table {
+        font-size: 50px;
+        border-spacing:70px;
+        text-align: center;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translateX(-50%);
+      }
+
+      table td{
+        width: 150px;
+      }
+
+
+      #title1 {
+        text-align: left;
+        color:black;
+        border: 3px black solid;
+        margin-bottom: 50px;
+        padding: 10px;
+      }
+    </style>
+
+  </head>
+
+  <body>
+    <h2 id='title1'><a href='/'>SUKJAE.GA</a></h2>
+    <h1>2020</h1>
+    <table>
+      <tr id='tabel_title'>
+        <td>일</td>
+        <td>시간</td>
+        <td>분</td>
+        <td>초</td>
+      </tr>
+      <tr>
+        <td id='days'></td>
+        <td id='hours'></td>
+        <td id='minutes'></td>
+        <td id='seconds'></td>
+      </tr>
+    </table>
+
+    <script type="text/javascript">
+
+      function countdown(){
+        var now = new Date();
+        var eventDate = new Date(2021,1,1);
+
+        var currentTime = now.getTime();
+        var eventTime = eventDate.getTime();
+
+        var remTime = eventTime - currentTime;
+
+        var s = Math.floor(remTime / 1000);
+        var m = Math.floor(s / 60);
+        var h = Math.floor(m / 60);
+        var d = Math.floor(h / 24);
+
+        h%=24;
+        m%=60;
+        s%=60;
+
+        h = (h < 10) ? "0" + h: h;
+        m = (m < 10) ? "0" + m: m;
+        s = (s < 10) ? "0" + s: s;
+
+        document.getElementById("days").textContent = d-31;
+
+        document.getElementById("hours").textContent = h;
+        document.getElementById("minutes").textContent = m;
+        document.getElementById("seconds").textContent = s;
+
+        setTimeout(countdown, 1000);
+    }
+    countdown();
+    </script>
+  </body>
+</html>
