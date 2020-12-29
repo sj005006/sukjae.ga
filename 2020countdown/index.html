@@ -34,13 +34,14 @@
         margin-bottom: 50px;
         padding: 10px;
       }
+
     </style>
 
   </head>
 
   <body>
     <h2 id='title1'><a href='/'>SUKJAE.GA</a></h2>
-    <h1>2020</h1>
+    <h1 id='year'>2020</h1>
     <table>
       <tr id='tabel_title'>
         <td>일</td>
@@ -58,37 +59,82 @@
 
     <script type="text/javascript">
 
-      function countdown(){
+
+
+    function changeBackground(color) {
+      document.body.style.background = color;
+    }
+
+    function getColor(s) {
+
+       color =  ((0xf9e464*(s*10) + 0xa4a3a8*(600-s*10))/600);
+
+      return '#' + Math.floor(color);
+    }
+
+    function countdown(){
         var now = new Date();
-        var eventDate = new Date(2021,1,1);
+        var eventDate = new Date(2020,1,1);
 
         var currentTime = now.getTime();
         var eventTime = eventDate.getTime();
 
         var remTime = eventTime - currentTime;
 
-        var s = Math.floor(remTime / 1000);
-        var m = Math.floor(s / 60);
-        var h = Math.floor(m / 60);
-        var d = Math.floor(h / 24);
 
-        h%=24;
-        m%=60;
-        s%=60;
+        if (remTime >0){
+          var s = Math.floor(remTime / 1000);
+          var m = Math.floor(s / 60);
+          var h = Math.floor(m / 60);
+          var d = Math.floor(h / 24);
 
-        h = (h < 10) ? "0" + h: h;
-        m = (m < 10) ? "0" + m: m;
-        s = (s < 10) ? "0" + s: s;
+          h%=24;
+          m%=60;
+          s%=60;
 
-        document.getElementById("days").textContent = d-31;
+          h = (h < 10) ? "0" + h: h;
+          m = (m < 10) ? "0" + m: m;
+          s = (s < 10) ? "0" + s: s;
 
-        document.getElementById("hours").textContent = h;
-        document.getElementById("minutes").textContent = m;
-        document.getElementById("seconds").textContent = s;
+          document.getElementById("days").textContent = d-31;
 
-        setTimeout(countdown, 1000);
+          document.getElementById("hours").textContent = h;
+          document.getElementById("minutes").textContent = m;
+          document.getElementById("seconds").textContent = s;
+
+          setTimeout(countdown, 1000);
+        } else {
+          var s = Math.floor(-remTime / 1000);
+          var m = Math.floor(s / 60);
+          var h = Math.floor(m / 60);
+          var d = Math.floor(h / 24);
+
+          h%=24;
+          m%=60;
+          s%=60;
+
+          h = (h < 10) ? "0" + h: h;
+          m = (m < 10) ? "0" + m: m;
+          s = (s < 10) ? "0" + s: s;
+
+          document.getElementById("days").textContent = '+'+(d+31);
+
+          document.getElementById("hours").textContent = h;
+          document.getElementById("minutes").textContent = m;
+          document.getElementById("seconds").textContent = s;
+
+          setTimeout(countdown, 1000);
+
+          document.getElementById('year').textContent = '2021';
+
+
+          changeBackground(getColor(s));
+          
+        }
+
     }
     countdown();
     </script>
+
   </body>
 </html>
