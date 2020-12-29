@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>TwoButtons</title>
+    <style>
+      h1 {
+        text-align: center;
+        font-size: 100px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+      }
+
+      h2 {
+        text-align: center;
+        font-size: 15px;
+        margin-top: 30px;
+        color: gray;
+      }
+
+      .button {
+        width:100px;
+        height:100px;
+        background-color: #a4a3a8;
+        border: none;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        display: inline-block;
+        font-size: 24px;
+        margin: 0px;
+        border:3px solid black;
+        }
+      .button1 {
+        border-radius: 100%;
+        position: absolute;
+        top: 60%;
+        left: 42%;
+        transform: translateX(-50%);
+      }
+      .button2 {
+        transform: translateX(-50%);
+        border-radius: 100%;
+        position: absolute;
+        top: 60%;
+        left: 57%;
+
+      }
+
+      #button3 {
+        margin:0;
+        width: 100px;
+        height: 50px;
+        font-size:15px;
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Two Buttons</h1>
+    <h2>Here are two buttons you turn on and off. Can you find the rule?</h2>
+    <button id='button1'class="button button1" onclick='buttonClick1()'></button>
+    <button id='button2'class="button button2"onclick='buttonClick2()'></button>
+    <button id='button3' onclick='reset()'>RESET</button>
+
+
+    <script>
+
+    var btn1 = 0;
+    var btn2 = 0;
+    var state = 1;
+    var state1 =0;
+    var state2 =0;
+    var state3 =0;
+    var state4 =0;
+
+
+
+
+      function changeColor(){
+        if (state==1){
+          document.getElementById("button1").style.backgroundColor = '#a4a3a8'
+          document.getElementById("button2").style.backgroundColor = '#a4a3a8'
+        }
+        if (state==2){
+          document.getElementById("button1").style.backgroundColor = '#a4a3a8'
+          document.getElementById("button2").style.backgroundColor = '#f9e464'
+        }
+        if (state==3){
+          document.getElementById("button1").style.backgroundColor = '#f9e464'
+          document.getElementById("button2").style.backgroundColor = '#a4a3a8'
+        }
+        if (state==4){
+          document.getElementById("button1").style.backgroundColor = '#f9e464'
+          document.getElementById("button2").style.backgroundColor = '#f9e464'
+        }
+      }
+
+      function buttonClick1(){
+        if(state ==1) {
+          if(state1 == 0){
+            state = 3;
+            state1 =1;
+            changeColor();
+            return;
+          } else {
+            state = 2;
+            state1 = 0;
+            changeColor();
+            return;
+          }
+        }
+        if(state ==2) {
+          if(state2 == 0){
+            state = 1;
+            state2 =1;
+            changeColor();
+            return;
+          } else {
+            state = 4;
+            state2 = 1;
+            changeColor();
+            return;
+          }
+        }
+        if(state ==3) {
+          if(state3 == 0){
+            state = 2;
+            state3 =1;
+            changeColor();
+            return;
+          } else {
+            state = 1;
+            state3 = 0;
+            changeColor();
+            return;
+          }
+        }
+        if(state ==4) {
+          if(state4 == 0){
+            state = 2;
+            state4 =1;
+            changeColor();
+            return;
+          } else {
+            state = 1;
+            state4 = 0;
+            changeColor();
+            return;
+          }
+        }
+      }
+
+
+      function buttonClick2(){
+        if(state ==1) {
+          if(state1 == 0){
+            state = 2;
+            state1 =1;
+            changeColor();
+            return;
+          } else {
+            state = 3;
+            state1 = 0;
+            changeColor();
+            return;
+          }
+        }
+        if(state ==2) {
+          if(state2 == 0){
+            state = 4;
+            state2 =1;
+            changeColor();
+            return;
+          } else {
+            state = 1;
+            state2 = 0;
+            changeColor();
+            return;
+          }
+        }
+        if(state ==3) {
+          if(state3 == 0){
+            state = 1;
+            state3 =1;
+            changeColor();
+            return;
+          } else {
+            state = 2;
+            state3 = 0;
+            changeColor();
+            return;
+          }
+        }
+        if(state ==4) {
+          if(state4 == 0){
+            state = 1;
+            state4 =1;
+            changeColor();
+            return;
+          } else {
+            state = 2;
+            state4 = 0;
+            changeColor();
+            return;
+          }
+        }
+      }
+
+      function reset() {
+        document.getElementById("button1").style.backgroundColor = '#a4a3a8'
+        document.getElementById("button2").style.backgroundColor = '#a4a3a8'
+         btn1 = 0;
+         btn2 = 0;
+         state = 1;
+         state1 =0;
+        state2 =0;
+        state3 =0;
+        state4 =0;
+
+      }
+    </script>
+  </body>
+</html>
