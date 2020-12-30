@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>6colors</title>
+    <style>
+    h1 {
+      text-align: center;
+      font-size: 90px;
+      margin-top: 15px;
+      margin-bottom: 25px;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 15px;
+      margin-top: 30px;
+      color: gray;
+    }
+    table {
+      position: fixed;
+      left: 40%;
+      top: 29%;
+      transform: translateX(-50%);
+      border:1px solid black;
+      border-collapse: collapse;
+      width: 450px;
+      height: 450px;
+      margin:10px;
+    }
+    td {
+      border:1px solid black;
+      width: 50px;
+      height: 50px;
+
+    }
+
+    button {
+      width:65px;
+      height:65px;
+      font-size:50px
+    }
+    #button1 {
+      position: fixed;
+      left: 70%;
+      top: 37%;
+    }
+    #button2 {
+      position: fixed;
+      left: 77%;
+      top: 50%;
+    }
+    #button3 {
+      position: fixed;
+      left: 70%;
+      top: 63%;
+    }
+    #button4 {
+      position: fixed;
+      left: 63%;
+      top: 50%;
+    }
+    #button5 {
+        margin:0;
+        width: 100px;
+        height: 50px;
+        font-size:15px;
+        position: fixed;
+        top: 80%;
+        left: 70%;
+        transform: translateX(-15%);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>6 Colors</h1>
+    <h2>Use Arrows to move. Can you find the rule?</h2>
+    <button id='button1' onclick="moveUp()">&#8679;</botton>
+    <button id='button2' onclick="moveRight()">&#8680;</botton>
+    <button id='button3' onclick="moveDown()">&#8681;</botton>
+    <button id='button4' onclick="moveLeft()">&#8678;</botton>
+    <button id='button5' onclick='reset()'>RESET</button>
+
+    <table>
+      <tr>
+        <td id='11'></td>
+        <td id='12'></td>
+        <td id='13'></td>
+        <td id='14'></td>
+        <td id='15'></td>
+        <td id='16'></td>
+        <td id='17'></td>
+        <td id='18'></td>
+        <td id='19'></td>
+      </tr>
+      <tr>
+        <td id='21'></td>
+        <td id='22'></td>
+        <td id='23'></td>
+        <td id='24'></td>
+        <td id='25'></td>
+        <td id='26'></td>
+        <td id='27'></td>
+        <td id='28'></td>
+        <td id='29'></td>
+      </tr>
+      <tr>
+        <td id='31'></td>
+        <td id='32'></td>
+        <td id='33'></td>
+        <td id='34'></td>
+        <td id='35'></td>
+        <td id='36'></td>
+        <td id='37'></td>
+        <td id='38'></td>
+        <td id='39'></td>
+      </tr>
+      <tr>
+        <td id='41'></td>
+        <td id='42'></td>
+        <td id='43'></td>
+        <td id='44'></td>
+        <td id='45'></td>
+        <td id='46'></td>
+        <td id='47'></td>
+        <td id='48'></td>
+        <td id='49'></td>
+      </tr>
+      <tr>
+        <td id='51'></td>
+        <td id='52'></td>
+        <td id='53'></td>
+        <td id='54'></td>
+        <td id='55'></td>
+        <td id='56'></td>
+        <td id='57'></td>
+        <td id='58'></td>
+        <td id='59'></td>
+      </tr>
+      <tr>
+        <td id='61'></td>
+        <td id='62'></td>
+        <td id='63'></td>
+        <td id='64'></td>
+        <td id='65'></td>
+        <td id='66'></td>
+        <td id='67'></td>
+        <td id='68'></td>
+        <td id='69'></td>
+      </tr>
+      <tr>
+        <td id='71'></td>
+        <td id='72'></td>
+        <td id='73'></td>
+        <td id='74'></td>
+        <td id='75'></td>
+        <td id='76'></td>
+        <td id='77'></td>
+        <td id='78'></td>
+        <td id='79'></td>
+      </tr>
+      <tr>
+        <td id='81'></td>
+        <td id='82'></td>
+        <td id='83'></td>
+        <td id='84'></td>
+        <td id='85'></td>
+        <td id='86'></td>
+        <td id='87'></td>
+        <td id='88'></td>
+        <td id='89'></td>
+      </tr>
+      <tr>
+        <td id='91'></td>
+        <td id='92'></td>
+        <td id='93'></td>
+        <td id='94'></td>
+        <td id='95'></td>
+        <td id='96'></td>
+        <td id='97'></td>
+        <td id='98'></td>
+        <td id='99'></td>
+      </tr>
+    </table>
+
+    <script>
+      var xposition = 5;
+      var yposition = 5;
+      var beforePosition = 55;
+      var up ='r';
+      var right ='y';
+      var left ='p';
+      var back ='g';
+      var down ='b';
+      var front ='o';
+
+      function getPosition(){
+        return (yposition)*10 + xposition;
+      }
+
+      function moveUp(){
+        if(yposition != 1){
+
+          var temp = back;
+          back = up;
+          up = front;
+          front = down;
+          down = temp;
+
+          beforePosition = getPosition();
+          yposition = yposition -1;
+          colorPosition();
+        }
+      }
+      function moveDown(){
+        if(yposition != 9){
+
+          var temp = back;
+          back = down;
+          down = front;
+          front = up;
+          up = temp;
+
+          beforePosition = getPosition();
+          yposition = yposition +1;
+          colorPosition();
+        }
+      }
+      function moveRight(){
+        if(xposition != 9){
+
+          var temp = up;
+          up= left;
+          left = down;
+          down = right;
+          right = temp;
+
+          beforePosition = getPosition();
+          xposition = xposition +1;
+          colorPosition();
+        }
+      }
+      function moveLeft(){
+        if(xposition != 1){
+
+          var temp = up;
+          up= right;
+          right = down;
+          down = left;
+          left = temp;
+
+          beforePosition = getPosition();
+          xposition = xposition -1;
+          colorPosition();
+        }
+      }
+      function colorPosition(){
+        document.getElementById(beforePosition).style.borderWidth = '1px';
+        if (down == 'r'){
+          document.getElementById(getPosition()).style.backgroundColor = 'red';
+        }
+        if (down == 'o'){
+          document.getElementById(getPosition()).style.backgroundColor = 'orange';
+        }
+        if (down == 'y'){
+          document.getElementById(getPosition()).style.backgroundColor = 'yellow';
+        }
+        if (down == 'g'){
+          document.getElementById(getPosition()).style.backgroundColor = 'green';
+        }
+        if (down == 'b'){
+          document.getElementById(getPosition()).style.backgroundColor = 'blue';
+        }
+        if (down == 'p'){
+          document.getElementById(getPosition()).style.backgroundColor = 'purple';
+        }
+        document.getElementById(getPosition()).style.borderWidth = '2px';
+      }
+
+      function reset() {
+        for(i=1;i<10;i++){
+          for(j=1;j<10;j++){
+            document.getElementById(i*10+j).style.backgroundColor = 'white';
+          }
+        }
+        document.getElementById(getPosition()).style.borderWidth = '1px';
+
+        xposition = 5;
+        yposition = 5;
+        beforePosition = 55;
+        up ='r';
+        right ='y';
+        left ='p';
+        back ='g';
+        down ='b';
+        front ='o';
+        colorPosition();
+      }
+
+      colorPosition();
+    </script>
+
+  </body>
+</html>
