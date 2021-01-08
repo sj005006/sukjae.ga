@@ -1,0 +1,13 @@
+.circle {
+  background-color:black;
+  display:block;
+  height:30px;
+  width:30px;
+  border-radius:50%;
+
+  text-align:center
+}
+
+var span_obj = document.createElement("span");
+span_obj.classList.add("circle");
+document.getElementById(position).appendChild(span_obj);
