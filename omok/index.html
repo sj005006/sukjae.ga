@@ -1963,7 +1963,7 @@
         processBoardVal(colorNum);
         for(var i=1;i<226;i++){
           if(!document.getElementById(boardtoPosition(i)).firstChild){
-            if(boardValueProcess[i][0]==4){
+            if(boardValueProcess[i][0]==4 && boardValueProcess[i][2]==0){
               choice = i;
               return choice;
             }
